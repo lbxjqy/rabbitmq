@@ -5,16 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+
 @Component
-public class Sender {
+public class Sender2 {
     @Autowired
     private AmqpTemplate rabbitTemplate;
 
     public void send() {
-        Entity entity = new Entity();
-        entity.setName("lin");
-        entity.setPass("boxuan");
-        System.out.println("entity send :" + entity.getName() + "/" +entity + entity.getPass());
-        this.rabbitTemplate.convertAndSend("hello2", entity);
+        String context = "hello" + new Date();
+        System.out.println("Sender: 生产者2" + context);
+        this.rabbitTemplate.convertAndSend("hello2", context);
     }
 }

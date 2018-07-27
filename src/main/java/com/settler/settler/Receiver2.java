@@ -4,20 +4,13 @@ import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-
-/**
- * @author 翟永超
- * @create 2016/9/25.
- * @blog http://blog.didispace.com
- */
 @Component
 @RabbitListener(queues = "hello2")
-public class Receiver {
+public class Receiver2 {
 
     @RabbitHandler
-    public void process(Entity entity) {
-        System.out.println("user receive  : " + entity.getName()+"/"+entity.getPass());
+    public void process(String hello) {
+        System.out.println("Receiver2  : " + hello);
     }
 
 }
